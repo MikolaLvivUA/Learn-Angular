@@ -1,0 +1,50 @@
+<style>
+  button { margin: 2px}
+</style>
+
+<h1>
+  WELCOME TO LUN
+</h1>
+
+<input type="text" (input)="onInput($event)">
+<button (click)="clickSearchBtn()">Search</button>
+<button (click)="registerClick()">Register</button>
+<button (click)="logClick()">LogIn</button>
+<button (click)="ShowAllClick()">Show All Houses</button>
+
+<div>
+  {{ShowingValue}}
+</div>
+
+<div [ngSwitch]="RClick">
+  <form *ngSwitchCase = true>
+    <input type="email" placeholder="please enter your email">
+    <br>
+    <input type="password" placeholder="please enter your password">
+    <br>
+    <input type="password" placeholder="please repeat your password">
+    <br>
+    <input type="text" placeholder="please enter your name">
+    <br>
+    <input type="text" placeholder="please enter your surname">
+    <br>
+    <button>REGISTER</button>
+  </form>
+</div>
+
+<div [ngSwitch]="LClick">
+  <form *ngSwitchCase = true>
+    <input type="email" placeholder="enter your email">
+    <input type="password" placeholder="enter your password">
+    <br>
+    <button>LOG IN</button>
+  </form>
+</div>
+
+<div *ngFor="let house of ShowingAllHouse">
+  HATA {{house.id}}
+  <br>
+  city {{house.city}}
+  <br>
+  <br>
+</div>

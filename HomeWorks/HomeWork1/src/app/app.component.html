@@ -1,6 +1,17 @@
 <style>
+  input{
+    margin: 2px;
+  }
+
   button {
     margin: 2px
+  }
+
+  .houses{
+    border: 2px solid green;
+    margin: 2px;
+    width: 10rem;
+    text-align: center;
   }
 </style>
 
@@ -9,10 +20,12 @@
 </h1>
 
 <input type="text" (input)="onInput($event)">
+
 <button (click)="clickSearchBtn()">Search</button>
 <button (click)="registerClick()">Register</button>
 <button (click)="logClick()">LogIn</button>
 <button (click)="ShowAllClick()">Show All Houses</button>
+<button (click)="createHouse()">Create House</button>
 
 <div>
   {{ShowingValue}}
@@ -36,21 +49,26 @@
 
 <div [ngSwitch]="LClick">
   <form *ngSwitchCase=true>
-    <input type="email" placeholder="enter your email">
-    <input type="password" placeholder="enter your password">
+    <input type="email" name="email" placeholder="enter your email">
+    <input type="password" name="password" placeholder="enter your password">
     <br>
     <button>LOG IN</button>
   </form>
 </div>
 
-<div [ngSwitch]="SAClick">
-  <div *ngFor="let house of ShowingAllHouse">
-    <div *ngSwitchCase=true>
+<div *ngIf="SAClick">
+  <div *ngFor="let house of ShowingAllHouse" class="houses">
       HATA {{house.id}}
       <br>
       city {{house.city}}
       <br>
       <br>
-    </div>
   </div>
 </div>
+
+<form *ngIf="CHClick" (input)="createInput($event)">
+  <input type="text" name="city" placeholder="enter your city">
+  <input type="text" name="square" placeholder="enter square">
+  <input type="text" name="price" placeholder="enter price">
+  <button (click)="createNewHouse(); $event.preventDefault()">CREATE</button>
+</form>

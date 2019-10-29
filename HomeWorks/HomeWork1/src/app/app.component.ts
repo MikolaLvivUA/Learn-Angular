@@ -9,27 +9,37 @@ export class AppComponent {
   title = 'HomeWork1';
   InputValue: string | number;
   ShowingValue: string | number;
-  RClick: boolean = false;
-  LClick: boolean = false;
+  RClick = false;
+  LClick = false;
   ShowingAllHouse: any[] = [];
-  SAClick: boolean = false;
+  SAClick = false;
+  CHClick = false;
+  CreateHouseValue: any;
 
   housesArray = [
     {
       id: 1,
-      city: 'Lviv'
+      city: 'Lviv',
+      square: 130,
+      price: 100000
     },
     {
       id: 2,
-      city: 'Kyiv'
+      city: 'Kyiv',
+      square: 80,
+      price: 85000
     },
     {
       id: 3,
-      city: 'Odesa'
+      city: 'Odesa',
+      square: 200,
+      price: 400000
     },
     {
       id: 4,
-      city: 'Dnipro'
+      city: 'Dnipro',
+      square: 500,
+      price: 1000000
     }
   ];
 
@@ -45,15 +55,37 @@ export class AppComponent {
   registerClick() {
     this.RClick = !this.RClick;
     this.LClick = false;
+    this.SAClick = false;
+    this.CHClick = false;
   }
 
   logClick() {
     this.LClick = !this.LClick;
     this.RClick = false;
+    this.SAClick = false;
+    this.CHClick = false;
   }
 
   ShowAllClick() {
     this.SAClick = !this.SAClick;
+    this.LClick = false;
+    this.RClick = false;
+    this.CHClick = false;
     this.ShowingAllHouse = this.housesArray;
+  }
+
+  createHouse() {
+    this.CHClick = !this.CHClick;
+    this.LClick = false;
+    this.RClick = false;
+    this.SAClick = false;
+  }
+
+  createInput(event) {
+    this.CreateHouseValue = event.target.value;
+  }
+
+  createNewHouse() {
+    console.log(this.CreateHouseValue);
   }
 }

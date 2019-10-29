@@ -1,0 +1,57 @@
+<!--Таким чином ми викликаєм змінні-->
+<!--{{test}}-->
+
+<!--Title при наведенні мишкою відображаєтьсяя наша змінна як підказка-->
+<div [title]="test">
+  HELLO WORLD
+</div>
+<!--Івент клік спрацбовує при натисканні-->
+<button (click)="mouseClick()">
+  CLICK ME
+</button>
+
+<br>
+
+<!--Івент інпут $event це подія яка щойносталася-->
+  <input type="text" (input)="onInput($event)">
+
+<br>
+<!--виводим діні з нашого інпута-->
+{{inputedValue}}
+
+<br>
+
+<!--IF-ELSE-->
+
+<button (click)="changeStatus()">ChangeSTS</button>
+<!--Це директива яка дозволяє нам робити якісь певні логічні операції-->
+<div *ngIf="status">
+  TRUE
+</div>
+
+<div *ngIf="!status">
+  FALSE
+</div>
+
+<!--Switch-case-->
+
+<button (click)="incremI()">
+  I++
+</button>
+
+<div [ngSwitch]="numb">
+  <h1 *ngSwitchCase="1">First {{numb}}</h1>
+  <h1 *ngSwitchCase="2">Second {{numb}}</h1>
+  <h1 *ngSwitchCase="3">Third {{numb}}</h1>
+  <h1 *ngSwitchDefault>default {{numb}}</h1>
+</div>
+
+<!--ITAR-->
+
+<div *ngFor="let user of users" style = "border: 2px solid green; padding: 20px">
+  Name: {{user.name}}
+  <br>
+  Car: {{user.car}}
+  <br>
+  <br>
+</div>

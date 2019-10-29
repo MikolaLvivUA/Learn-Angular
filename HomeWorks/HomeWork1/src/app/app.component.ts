@@ -12,6 +12,7 @@ export class AppComponent {
   RClick: boolean = false;
   LClick: boolean = false;
   ShowingAllHouse: any[] = [];
+  SAClick: boolean = false;
 
   housesArray = [
     {
@@ -52,6 +53,7 @@ export class AppComponent {
   }
 
   ShowAllClick() {
+    this.SAClick = !this.SAClick;
     this.ShowingAllHouse = this.housesArray;
   }
 }

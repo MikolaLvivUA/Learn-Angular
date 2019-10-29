@@ -1,5 +1,7 @@
 <style>
-  button { margin: 2px}
+  button {
+    margin: 2px
+  }
 </style>
 
 <h1>
@@ -17,7 +19,7 @@
 </div>
 
 <div [ngSwitch]="RClick">
-  <form *ngSwitchCase = true>
+  <form *ngSwitchCase=true>
     <input type="email" placeholder="please enter your email">
     <br>
     <input type="password" placeholder="please enter your password">
@@ -33,7 +35,7 @@
 </div>
 
 <div [ngSwitch]="LClick">
-  <form *ngSwitchCase = true>
+  <form *ngSwitchCase=true>
     <input type="email" placeholder="enter your email">
     <input type="password" placeholder="enter your password">
     <br>
@@ -41,10 +43,14 @@
   </form>
 </div>
 
-<div *ngFor="let house of ShowingAllHouse">
-  HATA {{house.id}}
-  <br>
-  city {{house.city}}
-  <br>
-  <br>
+<div [ngSwitch]="SAClick">
+  <div *ngFor="let house of ShowingAllHouse">
+    <div *ngSwitchCase=true>
+      HATA {{house.id}}
+      <br>
+      city {{house.city}}
+      <br>
+      <br>
+    </div>
+  </div>
 </div>

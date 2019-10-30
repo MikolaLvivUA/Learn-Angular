@@ -9,11 +9,11 @@ export class AppComponent {
   title = 'HomeWork1';
   InputValue: string | number;
   ShowingValue: string | number;
-  RClick = false;
-  LClick = false;
+  RegisterClick = false;
+  LoginClick = false;
   ShowingAllHouse: any[] = [];
-  SAClick = false;
-  CHClick = false;
+  isShowAllClick = false;
+  CreateHouseClick = false;
   CreateHouseValue: any;
 
   housesArray = [
@@ -53,32 +53,32 @@ export class AppComponent {
   }
 
   registerClick() {
-    this.RClick = !this.RClick;
-    this.LClick = false;
-    this.SAClick = false;
-    this.CHClick = false;
+    this.RegisterClick = !this.RegisterClick;
+    this.LoginClick = false;
+    this.isShowAllClick = false;
+    this.CreateHouseClick = false;
   }
 
   logClick() {
-    this.LClick = !this.LClick;
-    this.RClick = false;
-    this.SAClick = false;
-    this.CHClick = false;
+    this.LoginClick = !this.LoginClick;
+    this.RegisterClick = false;
+    this.isShowAllClick = false;
+    this.CreateHouseClick = false;
   }
 
   ShowAllClick() {
-    this.SAClick = !this.SAClick;
-    this.LClick = false;
-    this.RClick = false;
-    this.CHClick = false;
+    this.isShowAllClick = !this.isShowAllClick;
+    this.LoginClick = false;
+    this.RegisterClick = false;
+    this.CreateHouseClick = false;
     this.ShowingAllHouse = this.housesArray;
   }
 
   createHouse() {
-    this.CHClick = !this.CHClick;
-    this.LClick = false;
-    this.RClick = false;
-    this.SAClick = false;
+    this.CreateHouseClick = !this.CreateHouseClick;
+    this.LoginClick = false;
+    this.RegisterClick = false;
+    this.isShowAllClick = false;
   }
 
   createInput(event) {

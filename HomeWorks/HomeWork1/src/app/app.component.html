@@ -1,20 +1,4 @@
-<style>
-  input{
-    margin: 2px;
-  }
-
-  button {
-    margin: 2px
-  }
-
-  .houses{
-    border: 2px solid green;
-    margin: 2px;
-    width: 10rem;
-    text-align: center;
-  }
-</style>
-
+egister
 <h1>
   WELCOME TO LUN
 </h1>
@@ -31,7 +15,7 @@
   {{ShowingValue}}
 </div>
 
-<div [ngSwitch]="RClick">
+<div [ngSwitch]="RegisterClick">
   <form *ngSwitchCase=true>
     <input type="email" placeholder="please enter your email">
     <br>
@@ -47,7 +31,7 @@
   </form>
 </div>
 
-<div [ngSwitch]="LClick">
+<div [ngSwitch]="LoginClick">
   <form *ngSwitchCase=true>
     <input type="email" name="email" placeholder="enter your email">
     <input type="password" name="password" placeholder="enter your password">
@@ -56,7 +40,7 @@
   </form>
 </div>
 
-<div *ngIf="SAClick">
+<div *ngIf="isShowAllClick">
   <div *ngFor="let house of ShowingAllHouse" class="houses">
       HATA {{house.id}}
       <br>
@@ -66,7 +50,7 @@
   </div>
 </div>
 
-<form *ngIf="CHClick" (input)="createInput($event)">
+<form *ngIf="CreateHouseClick" (input)="createInput($event)">
   <input type="text" name="city" placeholder="enter your city">
   <input type="text" name="square" placeholder="enter square">
   <input type="text" name="price" placeholder="enter price">

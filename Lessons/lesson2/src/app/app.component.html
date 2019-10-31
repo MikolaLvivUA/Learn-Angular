@@ -1,0 +1,153 @@
+<!--styles-->
+<!--Один з плюсів Angular це те що ми можемо стилізувати наші елементи динамічно-->
+
+<!--Якщо наша змінна folse текст замалюється червоним, якщо true то текст замалюється зеленим-->
+<h2 [style.color]="error ? 'red' : 'green'">SOME TEXT</h2>
+
+<!--Таким чином задається background-color-->
+<h2 [style.backgroundColor]="error ? 'red' : 'green'">SOME TEXT</h2>
+
+<!--Також ми можемо міняти класи-->
+<!--Теxt content задає текст-->
+<div
+  [ngClass]="error ? 'bg-red' : 'bg-green'"
+  [textContent]="error ? 'ERRRRRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOORRRR!!!!' : 'ALL FINE'"
+>
+  DIVKA
+</div>
+
+<!--ngClass приймає всебе масив класів по пріоритетності перший клас менш пріоритетний -->
+<div
+  [ngClass]="['bg-red', error ? 'color-yellow' : 'color-notYellow']"
+>
+  ng Class Array
+</div>
+<br>
+<br>
+<!--Можемо передавати в обєктах декілька параметрів чере ngStyle-->
+<div [ngStyle]="errorStyle">
+  ng style Ts
+</div>
+
+<!--створюєм кнопку DO ERROR яка при кліку викликає функцію яка міняє значення змінної-->
+<button (click)="createErr()">DO ERROR</button>
+
+<!--FORMS-->
+<br>
+<br>
+<br>
+<p></p>
+
+FORMS
+
+REFERENCE FORM
+
+<form #jobReferenceForm="ngForm" (ngSubmit)="applyForRef(jobReferenceForm)"><!--Обовязково треба вказувати ngForm;
+                                                                                ngSubmit приймає функцію в яку ми передаєм змінну нашої форми-->
+  NAME: <input type="text" name="name" placeholder="enter your name" ngModel>
+  <br>
+  <input type="radio" name="gender" value="male" ngModel> MALE
+  <input type="radio" name="gender" value="female" ngModel> FEMALE
+  <br>
+  <input type="checkbox" name="js" value="js" ngModel> JS
+  <input type="checkbox" name="java" value="java" ngModel> JAVA
+  <input type="checkbox" name="php" value="PeHaPe" ngModel> PHP
+  <br>
+  <select name="position" ngModel>
+    <option value="Junior">Junior</option>
+    <option value="Middle">Middle</option>
+    <option value="Senior">Senior</option>
+  </select>
+  <br>
+  <button>GO GO GO</button>
+</form>
+
+<br>
+<br>
+<br>
+<p></p>
+
+TWO WAYS DATA BINDING
+<!--В ts файлі ми мусимо створити обєкт який буде аовторювати нашу форму-->
+<!--email буде вимагати щоб введений був тільки email-->
+<!--required обовязкова для заповнення-->
+<!--minlength maxlength максимальна мінімальна довжина-->
+<form (ngSubmit)="applyGotDataBind(twoWayForm)" #twoWayForm="ngForm">
+  <label [ngStyle]="{color: emailInput.invalid && emailInput.dirty ? 'red' : 'black'}">NAME: </label>
+  <input type="text" name="name" placeholder="enter your name"
+         [(ngModel)]="employee.name"
+         #emailInput="ngModel"
+         email
+         required
+  >
+  <br>
+  <input type="radio" name="gender" value="male"
+         [(ngModel)]="employee.gender"> MALE
+  <input type="radio" name="gender" value="female"
+         [(ngModel)]="employee.gender"> FEMALE
+  <br>
+  <input type="checkbox" name="js" value="js"
+         [(ngModel)]="employee.js"> JS
+  <input type="checkbox" name="java" value="java"
+         [(ngModel)]="employee.java"> JAVA
+  <input type="checkbox" name="php" value="PeHaPe"
+         [(ngModel)]="employee.php"> PHP
+  <br>
+  <select name="position" [(ngModel)]="employee.position">
+    <option value="Junior">Junior</option>
+    <option value="Middle">Middle</option>
+    <option value="Senior">Senior</option>
+  </select>
+  <br>
+  <button [disabled]="!twoWayForm.valid">GO GO GO</button>
+</form>
+
+<button (click)="autoFill()"></button>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<!--Pipes-->
+
+{{pipeString}}
+<br>
+<br>
+{{pipeString | lowercase}}
+<br>
+<br>
+{{pipeString | uppercase}}
+<br>
+<br>
+{{pipeString | slice: 3: 10}}
+<br>
+<br>
+{{pipeNumber}}
+<br>
+<br>
+{{pipeNumber | number: '3.2-5'}} <!--скільки знаків перед комою вивести і з якої по яку цифри після коми-->
+<br>
+<br>
+{{pipeNumber | number: '2.0-0'}} <!--Такий запис заукруглить число-->
+<br>
+<br>
+{{pipePercent}}
+<br>
+<br>
+{{pipePercent | percent}}
+<br>
+<br>
+<br>
+<br>
+{{pipeDate | date: 'fullDate'}}
+<br>
+<br>
+{{pipeDate | date: 'shortDate'}}
+<br>
+<br>
+{{pipeDate | date: 'fullTime'}}
+<br>
+<br>
+{{pipeDate}}

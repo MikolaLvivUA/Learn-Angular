@@ -1,0 +1,130 @@
+<h1>
+  WELCOME TO LUN
+</h1>
+
+<input type="text" (input)="onInput($event)">
+
+<button (click)="clickSearchBtn()">Search</button>
+<button (click)="registerClick()">Register</button>
+<button (click)="logClick()">LogIn</button>
+<button (click)="ShowAllClick()">Show All Houses</button>
+<button (click)="createHouse()">Create House</button>
+
+<div>
+  {{ShowingValue}}
+</div>
+<!--REGISTER FORM-->
+<div [ngSwitch]="isRegisterClick">
+  <form *ngSwitchCase=true
+        (ngSubmit)="registerNewUser()"
+        #registrationForm="ngForm">
+
+    <input type="email" name="email" placeholder="please enter your email"
+           #emailInput="ngModel"
+           [ngStyle]="{backgroundColor: emailInput.invalid && emailInput.dirty ? 'red' : 'white'}"
+           [(ngModel)]="user.email"
+           email
+           required
+    >
+    <br>
+    <input type="password" name="password" placeholder="please enter your password"
+           #passwordInput="ngModel"
+           [ngStyle]="{backgroundColor: passwordInput.invalid && passwordInput.dirty ? 'red' : 'white'}"
+           [(ngModel)]="user.password"
+           required
+    >
+    <br>
+    <input type="password" name="repeatPassword" placeholder="please repeat your password"
+           #repeatPassword="ngModel"
+           [ngStyle]="{backgroundColor: repeatPassword.invalid
+           && repeatPassword.dirty
+           && !passwordValidation ? 'red' : 'white'}"
+           [(ngModel)]="user.repeatPassword"
+           required
+    >
+    <br>
+    <input type="text" name="name" placeholder="please enter your name"
+           [(ngModel)]="user.name"
+           required
+    >
+    <br>
+    <input type="text" name="surname" placeholder="please enter your surname"
+           [(ngModel)]="user.surname"
+           required
+    >
+    <br>
+    <input type="text" name="age" placeholder="please enter your age"
+           [(ngModel)]="user.age">
+    <button [disabled]="registrationForm.invalid">REGISTER</button>
+  </form>
+</div>
+<!--LOGIN FORM-->
+<div [ngSwitch]="isLoginClick">
+  <form *ngSwitchCase=true
+        (ngSubmit)="loginUser()"
+        #loginForm="ngForm"
+  >
+    <input type="email" name="email" placeholder="enter your email"
+           [(ngModel)]="login.email"
+           email
+           required
+    >
+    <br>
+    <input type="password" name="password" placeholder="enter your password"
+           [(ngModel)]="login.password"
+           required
+    >
+    <br>
+    <div *ngIf="isUserLogin">{{isUserLogin}}</div>
+    <button [disabled]="loginForm.invalid">LOG IN</button>
+
+  </form>
+</div>
+<!--SHOW ALL-->
+<div *ngIf="isShowAllClick">
+  <div *ngFor="let house of ShowingAllHouse"
+       [ngClass]=" house.owner.isBlocked ? 'blockedUser' : 'houses' "
+  >
+    HATA {{house.id}}
+    <br>
+    owner {{house.owner.name}}
+    <br>
+    <br>
+    <button (click)="ShowAllButtonClick(house.id)">ShowAllInfo</button>
+    <div *ngIf="index === house.id">
+      city {{house.city}}
+      <br>
+      price: {{house.price}}
+      <br>
+      square: {{house.square}}
+    </div>
+  </div>
+</div>
+<!--CREATE HOUSE-->
+<form *ngIf="isCreateHouseClick"
+      (ngSubmit)="createNewHouse()"
+      #createHouseForm="ngForm"
+>
+  <input type="text" name="city" placeholder="enter your city"
+         #cityInput = "ngModel"
+         [ngStyle]="{backgroundColor: cityInput.invalid && cityInput.dirty ? 'red' : 'white'}"
+         [(ngModel)]="house.city"
+         required
+  >
+  <br>
+  <input type="text" name="square" placeholder="enter square"
+         #squareInput = "ngModel"
+         [ngStyle]="{backgroundColor: squareInput.invalid && squareInput.dirty ? 'red' : 'white'}"
+         [(ngModel)]="house.square"
+         required
+  >
+  <br>
+  <input type="text" name="price" placeholder="enter price"
+         #priceInput = "ngModel"
+         [ngStyle]="{backgroundColor: priceInput.invalid && priceInput.dirty ? 'red' : 'white'}"
+         [(ngModel)]="house.price"
+         required
+  >
+  <br>
+  <button [disabled]="createHouseForm.invalid">CREATE</button>
+</form>

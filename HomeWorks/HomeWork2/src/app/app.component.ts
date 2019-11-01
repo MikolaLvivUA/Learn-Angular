@@ -18,7 +18,6 @@ export class AppComponent {
   isCreateHouseClick = false;
   isShowAllClick = false;
 
-  passwordValidation: boolean;
   ShowingAllHouse: any[] = [];
   usersArray: any[] = [];
   housesArray: any[] = [];
@@ -91,7 +90,6 @@ export class AppComponent {
 
   registerNewUser() {
     this.user.id = this.usersArray.length + 1;
-    this.user.repeatPassword !== this.user.password ? this.passwordValidation = false : this.passwordValidation = true;//Not work=(
     this.usersArray.push(this.user);
     this.boolean = +(Math.random() * (2 - 1) + 1).toFixed(0);
     this.boolean === 1 ? this.user.isBlocked = false : this.user.isBlocked = true;

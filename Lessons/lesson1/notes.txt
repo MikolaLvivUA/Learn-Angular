@@ -1,3 +1,4 @@
+Angular. Else if. For
 Створення проекту ng new ProjectName
 
 запуск аппи ng serve або ng s

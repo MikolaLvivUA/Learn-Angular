@@ -1,0 +1,31 @@
+{{2 | powNumber: 5}}
+
+<!--застосовуєм нашу кастомну директиву до нашого appHoveRizer-->
+<h1 appHoverRizer>
+  HELLO WORLD
+</h1>
+<!--Директива може приймати в себе якусь змінну-->
+<h2 appHoverRizer>
+  HELLO WORLD
+</h2>
+
+<h2 appHoverRizer = "blue">
+  HELLO WORLD
+</h2>
+
+<h2 appHoverRizer = "red">
+  HELLO WORLD
+</h2>
+
+<!--Викликаєм наш компонент в app component-->
+<!--Оголошуєм змінну house в яку передаєм наше ітреоване значення-->
+
+<!--ловимо нашу подію deleteHouse яка виконує функцію click here-->
+<!--event це те що ми предаєм в події яку трігерим-->
+<app-house-component
+  *ngFor="let house of houses"
+  [house] = "house"
+  (deleteHouse)="clickHere($event)"
+>
+
+</app-house-component>

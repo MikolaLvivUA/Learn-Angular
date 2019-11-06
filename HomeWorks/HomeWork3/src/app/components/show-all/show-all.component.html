@@ -1,0 +1,19 @@
+<div>
+  <div *ngFor="let house of ShowingAllHouse"
+       [ngClass]=" house.owner.isBlocked ? 'blockedUser' : 'houses' "
+  >
+    HATA {{house.id}}
+    <br>
+    owner {{house.owner.name}}
+    <br>
+    <br>
+    <button (click)="ShowAllButtonClick(house.id)">ShowAllInfo</button>
+    <div *ngIf="index === house.id">
+      city {{house.city}}
+      <br>
+      price: {{house.price | converter: curs}}
+      <br>
+      square: {{house.square}}
+    </div>
+  </div>
+</div>

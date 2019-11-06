@@ -1,0 +1,48 @@
+<h1>
+  WELCOME TO LUN
+</h1>
+
+<app-search
+  [ShowingValue] = "ShowingValue"
+></app-search>
+<br>
+
+<button (click)="registerClick()">Register</button>
+<button (click)="logClick()">LogIn</button>
+<button (click)="ShowAllClick()">Show All Houses</button>
+<button (click)="createHouse()">Create House</button>
+
+
+<!--REGISTER FORM-->
+
+<app-register
+  [usersArray] = "usersArray"
+  *ngIf="isRegisterClick"
+>
+</app-register>
+
+<!--LOGIN FORM-->
+
+<app-login
+  *ngIf="isLoginClick"
+  [usersArray] = "usersArray"
+>
+</app-login>
+
+
+<!--SHOW ALL-->
+<app-show-all
+  *ngIf="isShowAllClick"
+  [ShowingAllHouse] = "ShowingAllHouse"
+>
+</app-show-all>
+
+<!--CREATE HOUSE-->
+<app-create-house
+  *ngIf="isCreateHouseClick"
+  [housesArray]="housesArray"
+  [usersArray] = "usersArray"
+>
+</app-create-house>
+
+

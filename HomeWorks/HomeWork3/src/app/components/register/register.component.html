@@ -1,0 +1,36 @@
+<div>
+  <form
+    (ngSubmit)="registerNewUser()"
+    #registrationForm="ngForm">
+
+    <input type="email" name="email" placeholder="please enter your email"
+           #emailInput="ngModel"
+           [ngStyle]="{backgroundColor: emailInput.invalid && emailInput.dirty ? 'red' : 'white'}"
+           [(ngModel)]="newUser.email"
+           email
+           required
+    >
+    <br>
+    <input type="password" name="password" placeholder="please enter your password"
+           #passwordInput="ngModel"
+           [ngStyle]="{backgroundColor: passwordInput.invalid && passwordInput.dirty ? 'red' : 'white'}"
+           [(ngModel)]="newUser.password"
+           required
+    >
+    <br>
+
+    <input type="text" name="name" placeholder="please enter your name"
+           [(ngModel)]="newUser.name"
+           required
+    >
+    <br>
+    <input type="text" name="surname" placeholder="please enter your surname"
+           [(ngModel)]="newUser.surname"
+           required
+    >
+    <br>
+    <input type="text" name="age" placeholder="please enter your age"
+           [(ngModel)]="newUser.age">
+    <button [disabled]="registrationForm.invalid">REGISTER</button>
+  </form>
+</div>

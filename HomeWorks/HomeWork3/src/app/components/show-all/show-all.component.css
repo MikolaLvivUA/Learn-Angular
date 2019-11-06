@@ -1,0 +1,13 @@
+.houses{
+  border: 2px solid green;
+  margin: 2px;
+  width: 10rem;
+  text-align: center;
+}
+
+.blockedUser {
+  border: 2px solid red;
+  margin: 2px;
+  width: 10rem;
+  text-align: center;
+}
